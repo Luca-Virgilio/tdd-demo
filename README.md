@@ -1,5 +1,9 @@
 # tdd-demo
 
+An app for tracking reviews of dishes at different restaurants.
+
+Production: <https://tdd-demo-vue.netlify.app/>
+
 ## Project setup
 ```
 npm install
