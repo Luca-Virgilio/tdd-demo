@@ -8,7 +8,7 @@
 <script>
 import RestaurantList from './RestaurantList.vue';
 export default {
-  components: { RestaurantList },
+  components: {RestaurantList},
   name: 'RestaurantScreen',
 };
 </script>

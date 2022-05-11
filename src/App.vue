@@ -7,7 +7,7 @@
 <script>
 import RestaurantScreen from './components/RestaurantScreen.vue';
 export default {
-  components: { RestaurantScreen },
+  components: {RestaurantScreen},
   name: 'App',
 };
 </script>
