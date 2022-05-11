@@ -1,9 +1,13 @@
 <template>
-  <div id="app">Hello, world.</div>
+  <div id="app">
+    <restaurant-screen></restaurant-screen>
+  </div>
 </template>
 
 <script>
+import RestaurantScreen from './components/RestaurantScreen.vue';
 export default {
+  components: { RestaurantScreen },
   name: 'App',
 };
 </script>
