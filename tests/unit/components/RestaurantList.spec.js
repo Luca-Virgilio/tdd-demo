@@ -18,7 +18,7 @@ describe('RestaurantList', () => {
   let wrapper;
 
   beforeEach(() => {
-     restaurantsModule = {
+    restaurantsModule = {
       namespaced: true,
       state: {records},
       actions: {
