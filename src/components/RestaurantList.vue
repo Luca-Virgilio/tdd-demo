@@ -23,6 +23,5 @@ export default {
   mounted() {
     this.loadRestaurants();
   },
-  // eslint-disable-next-line prettier/prettier
-}
+};
 </script>
