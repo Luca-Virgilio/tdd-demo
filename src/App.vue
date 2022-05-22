@@ -1,24 +1,27 @@
 <template>
-  <div id="app">
-    <restaurant-screen></restaurant-screen>
-  </div>
+  <v-app>
+    <v-app-bar color="primary" fixed app>
+      <v-toolbar-title>Opinion Ate</v-toolbar-title>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <restaurant-screen />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 import RestaurantScreen from './components/RestaurantScreen.vue';
 export default {
-  components: {RestaurantScreen},
   name: 'App',
+
+  components: {
+    RestaurantScreen,
+  },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
