@@ -28,7 +28,11 @@ import {mapActions, mapState} from 'vuex';
 export default {
   name: 'RestaurantList',
   computed: {
-    ...mapState('restaurants', {restaurants: 'records', loading: 'loading', loadError:'loadError'}),
+    ...mapState('restaurants', {
+      restaurants: 'records',
+      loading: 'loading',
+      loadError: 'loadError',
+    }),
   },
   methods: {
     ...mapActions('restaurants', {loadRestaurants: 'load'}),

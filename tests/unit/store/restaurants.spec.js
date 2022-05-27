@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import { createLocalVue } from '@vue/test-utils';
+import {createLocalVue} from '@vue/test-utils';
 import restaurants from '@/store/restaurants';
 
 describe('restaurants', () => {
@@ -27,8 +27,8 @@ describe('restaurants', () => {
     describe('load action', () => {
       describe('when loading succeeds', () => {
         const records = [
-          { id: 1, name: "'Sushi Place" },
-          { id: 2, name: "'Pizza Place" },
+          {id: 1, name: "'Sushi Place"},
+          {id: 2, name: "'Pizza Place"},
         ];
         let store;
 
@@ -79,7 +79,7 @@ describe('restaurants', () => {
 
         beforeEach(() => {
           const api = {
-            loadRestaurants: () => new Promise(() => { }),
+            loadRestaurants: () => new Promise(() => {}),
           };
           store = new Vuex.Store({
             modules: {

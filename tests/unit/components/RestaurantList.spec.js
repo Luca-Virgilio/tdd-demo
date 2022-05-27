@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import { mount, createLocalVue } from '@vue/test-utils';
+import {mount, createLocalVue} from '@vue/test-utils';
 import RestaurantList from '@/components/RestaurantList';
 import Vue from 'vue';
 
@@ -15,14 +15,14 @@ describe('RestaurantList', () => {
   localVue.use(Vuex);
 
   const records = [
-    { id: 1, name: 'Sushi Place' },
-    { id: 2, name: 'Pizza Place' },
+    {id: 1, name: 'Sushi Place'},
+    {id: 2, name: 'Pizza Place'},
   ];
 
   let restaurantsModule;
   let wrapper;
 
-  const mountWithStore = (state = { records }) => {
+  const mountWithStore = (state = {records}) => {
     restaurantsModule = {
       namespaced: true,
       state: state,
@@ -36,7 +36,7 @@ describe('RestaurantList', () => {
       },
     });
 
-    wrapper = mount(RestaurantList, { localVue, store, vuetify });
+    wrapper = mount(RestaurantList, {localVue, store, vuetify});
   };
 
   it('loads restaurants on mount', () => {
@@ -45,7 +45,7 @@ describe('RestaurantList', () => {
   });
 
   it('displays the loading indicator while loading', () => {
-    mountWithStore({ loading: true });
+    mountWithStore({loading: true});
     expect(wrapper.find('[data-testid="loading-indicator"]').exists()).toBe(
       true,
     );
@@ -53,7 +53,7 @@ describe('RestaurantList', () => {
 
   describe('when loading succeeds', () => {
     beforeEach(() => {
-      mountWithStore({ records, loading: false });
+      mountWithStore({records, loading: false});
     });
     it('does not display the loading indicator while not loading', () => {
       expect(wrapper.find('[data-testid="loading-indicator"]').exists()).toBe(
@@ -62,7 +62,9 @@ describe('RestaurantList', () => {
     });
 
     it('does not display the error message', () => {
-      expect(wrapper.find('[data-testid="loading-error"]').exists()).toBe(false);
+      expect(wrapper.find('[data-testid="loading-error"]').exists()).toBe(
+        false,
+      );
     });
 
     it('displays the restaurants', () => {
@@ -73,12 +75,11 @@ describe('RestaurantList', () => {
 
   describe('when loading fails', () => {
     beforeEach(() => {
-      mountWithStore({ loadError: true });
+      mountWithStore({loadError: true});
     });
 
     it('displays the error message', () => {
       expect(wrapper.find('[data-testid="loading-error"]').exists()).toBe(true);
     });
   });
-
 });

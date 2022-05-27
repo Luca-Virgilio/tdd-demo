@@ -18,12 +18,13 @@ const restaurants = (api, stateOverrides) => ({
     recordLoadingError(state) {
       state.loading = false;
       state.loadError = true;
-    }
+    },
   },
   actions: {
     load(store) {
       store.commit('startLoading');
-      api.loadRestaurants()
+      api
+        .loadRestaurants()
         .then(records => {
           store.commit('storeRecords', records);
         })
