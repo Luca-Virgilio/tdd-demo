@@ -6,6 +6,9 @@
       color="primary"
       data-testid="loading-indicator"
     ></v-progress-circular>
+    <v-alert v-if="loadError" type="error" data-testid="loading-error">
+      Restaurants could not be loaded
+    </v-alert>
     <v-list-item
       v-for="restaurant in restaurants"
       :key="restaurant.id"
@@ -25,7 +28,7 @@ import {mapActions, mapState} from 'vuex';
 export default {
   name: 'RestaurantList',
   computed: {
-    ...mapState('restaurants', {restaurants: 'records', loading: 'loading'}),
+    ...mapState('restaurants', {restaurants: 'records', loading: 'loading', loadError:'loadError'}),
   },
   methods: {
     ...mapActions('restaurants', {loadRestaurants: 'load'}),

@@ -1,8 +1,10 @@
-const restaurants = api => ({
+const restaurants = (api, stateOverrides) => ({
   namespaced: true,
   state: {
     records: [],
     loading: false,
+    loadError: false,
+    ...stateOverrides,
   },
   mutations: {
     storeRecords(state, records) {
@@ -11,14 +13,21 @@ const restaurants = api => ({
     },
     startLoading(state) {
       state.loading = true;
+      state.loadError = false;
     },
+    recordLoadingError(state) {
+      state.loading = false;
+      state.loadError = true;
+    }
   },
   actions: {
     load(store) {
       store.commit('startLoading');
-      api.loadRestaurants().then(records => {
-        store.commit('storeRecords', records);
-      });
+      api.loadRestaurants()
+        .then(records => {
+          store.commit('storeRecords', records);
+        })
+        .catch(() => store.commit('recordLoadingError'));
     },
   },
 });
