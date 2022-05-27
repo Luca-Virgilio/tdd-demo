@@ -1,5 +1,11 @@
 <template>
   <div>
+    <v-progress-circular
+      v-if="loading"
+      indeterminate
+      color="primary"
+      data-testid="loading-indicator"
+    ></v-progress-circular>
     <v-list-item
       v-for="restaurant in restaurants"
       :key="restaurant.id"
@@ -19,7 +25,7 @@ import {mapActions, mapState} from 'vuex';
 export default {
   name: 'RestaurantList',
   computed: {
-    ...mapState('restaurants', {restaurants: 'records'}),
+    ...mapState('restaurants', {restaurants: 'records', loading: 'loading'}),
   },
   methods: {
     ...mapActions('restaurants', {loadRestaurants: 'load'}),
