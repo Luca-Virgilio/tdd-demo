@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import {createLocalVue} from '@vue/test-utils';
+import { createLocalVue } from '@vue/test-utils';
 import restaurants from '@/store/restaurants';
 
 describe('restaurants', () => {
@@ -27,8 +27,8 @@ describe('restaurants', () => {
     describe('load action', () => {
       describe('when loading succeeds', () => {
         const records = [
-          {id: 1, name: "'Sushi Place"},
-          {id: 2, name: "'Pizza Place"},
+          { id: 1, name: "'Sushi Place" },
+          { id: 2, name: "'Pizza Place" },
         ];
         let store;
 
@@ -79,11 +79,11 @@ describe('restaurants', () => {
 
         beforeEach(() => {
           const api = {
-            loadRestaurants: () => new Promise(() => {}),
+            loadRestaurants: () => new Promise(() => { }),
           };
           store = new Vuex.Store({
             modules: {
-              restaurants: restaurants(api, {loadError: true}),
+              restaurants: restaurants(api, { loadError: true }),
             },
           });
           store.dispatch('restaurants/load');
@@ -101,11 +101,12 @@ describe('restaurants', () => {
 
     describe('create action', () => {
       const newRestaurantName = 'Sushi Place';
-      const existingRestaurant = {id: 1, name: 'Pizza Place'};
-      const responseRestaurant = {id: 2, name: newRestaurantName};
+      const existingRestaurant = { id: 1, name: 'Pizza Place' };
+      const responseRestaurant = { id: 2, name: newRestaurantName };
 
       let api;
       let store;
+      let promise;
 
       beforeEach(() => {
         api = {
@@ -113,7 +114,7 @@ describe('restaurants', () => {
         };
         store = new Vuex.Store({
           modules: {
-            restaurants: restaurants(api, {records: [existingRestaurant]}),
+            restaurants: restaurants(api, { records: [existingRestaurant] }),
           },
         });
       });
@@ -127,7 +128,7 @@ describe('restaurants', () => {
       describe('when save succeeds', () => {
         beforeEach(() => {
           api.createRestaurant.mockResolvedValue(responseRestaurant);
-          store.dispatch('restaurants/create', newRestaurantName);
+          promise = store.dispatch('restaurants/create', newRestaurantName);
         });
 
         it('stores the returned restaurant in the store', () => {
@@ -136,6 +137,10 @@ describe('restaurants', () => {
             responseRestaurant,
           ]);
         });
+
+        it('resolves', () => {
+          return expect(promise).resolves.toBeUndefined();
+        })
       });
     });
   });
