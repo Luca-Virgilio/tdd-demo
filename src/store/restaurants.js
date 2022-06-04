@@ -34,7 +34,7 @@ const restaurants = (api, stateOverrides) => ({
         .catch(() => store.commit('recordLoadingError'));
     },
     create({commit}, newRestaurantName) {
-      api.createRestaurant(newRestaurantName).then(res => {
+      return api.createRestaurant(newRestaurantName).then(res => {
         commit('addRecord', res);
       });
     },
