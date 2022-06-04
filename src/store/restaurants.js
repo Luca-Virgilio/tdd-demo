@@ -19,6 +19,9 @@ const restaurants = (api, stateOverrides) => ({
       state.loading = false;
       state.loadError = true;
     },
+    addRecord(state, record) {
+      state.records.push(record);
+    },
   },
   actions: {
     load(store) {
@@ -29,6 +32,11 @@ const restaurants = (api, stateOverrides) => ({
           store.commit('storeRecords', records);
         })
         .catch(() => store.commit('recordLoadingError'));
+    },
+    create({commit}, newRestaurantName) {
+      return api.createRestaurant(newRestaurantName).then(res => {
+        commit('addRecord', res);
+      });
     },
   },
 });
