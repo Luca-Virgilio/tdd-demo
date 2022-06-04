@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
 import flushPromises from 'flush-promises';
-import { mount, createLocalVue } from '@vue/test-utils';
+import {mount, createLocalVue} from '@vue/test-utils';
 import NewRestaurantForm from '@/components/NewRestaurantForm.vue';
 
 Vue.use(Vuetify);
@@ -88,14 +88,17 @@ describe('NewRestaurantForm', () => {
     });
 
     it('clears the name', () => {
-      expect(wrapper.find('[data-testid="new-restaurant-name-field"]').element.value).toEqual('');
+      expect(
+        wrapper.find('[data-testid="new-restaurant-name-field"]').element.value,
+      ).toEqual('');
     });
   });
 
   describe('when empty', () => {
     beforeEach(() => {
       wrapper.find('[data-testid="new-restaurant-name-field"]').setValue('');
-      wrapper.find('[data-testid="new-restaurant-submit-button"]')
+      wrapper
+        .find('[data-testid="new-restaurant-submit-button"]')
         .trigger('click');
     });
 
